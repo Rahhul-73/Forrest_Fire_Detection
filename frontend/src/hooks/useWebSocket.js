@@ -14,9 +14,15 @@ export function useWebSocket(path = '/ws/live') {
       if (!isMounted) return;
       setStatus('CONNECTING');
 
-      // Use location.protocol & location.host to leverage Vite /ws proxy
-      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-      const wsUrl = `${protocol}//${window.location.host}${path}`;
+      // Use VITE_WS_URL environment variable if present, else fallback to window.location
+      let wsUrl = '';
+      if (import.meta.env.VITE_WS_URL) {
+        const baseWs = import.meta.env.VITE_WS_URL.replace(/\/$/, '');
+        wsUrl = `${baseWs}${path}`;
+      } else {
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        wsUrl = `${protocol}//${window.location.host}${path}`;
+      }
 
       try {
         const ws = new WebSocket(wsUrl);

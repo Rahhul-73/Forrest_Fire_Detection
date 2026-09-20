@@ -24,10 +24,18 @@ app = FastAPI(
     version="2.4.0"
 )
 
-# CORS allow all
+import os
+
+# Dynamic CORS Configuration from environment variable
+cors_origin_env = os.getenv("CORS_ORIGIN", "*")
+if cors_origin_env != "*":
+    allowed_origins = [origin.strip() for origin in cors_origin_env.split(",") if origin.strip()]
+else:
+    allowed_origins = ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

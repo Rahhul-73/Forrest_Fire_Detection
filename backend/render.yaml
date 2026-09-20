@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: firesense-backend
+    env: python
+    pythonVersion: 3.11.0
+    region: singapore
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: CORS_ORIGIN
+        value: https://firesense.vercel.app,http://localhost:5173
+      - key: MONGODB_URI
+        sync: false
+      - key: DB_NAME
+        value: firesense
