@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg-dark: #0a0e14;
+  --color-card-dark: #121826;
+  --color-border-dark: #1e293b;
+  --color-fire-orange: #ff6b35;
+  --color-alert-red: #ff2d55;
+  --color-safe-teal: #00d9a5;
+  --color-amber-warn: #ffb703;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg-dark);
+  color: #f1f5f9;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0e14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff6b35;
+}
+
+/* Glow Utilities */
+.glow-fire {
+  box-shadow: 0 0 15px rgba(255, 107, 53, 0.45);
+}
+.glow-alert {
+  box-shadow: 0 0 18px rgba(255, 45, 85, 0.55);
+}
+.glow-safe {
+  box-shadow: 0 0 15px rgba(0, 217, 165, 0.45);
+}
+
+/* Glassmorphism Card Style */
+.glass-panel {
+  background: rgba(18, 24, 38, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 41, 59, 0.8);
+  border-radius: 0.75rem;
+}
+
+/* Leaflet Dark Popup Styles */
+.leaflet-container {
+  background-color: #0a0e14 !important;
+  font-family: inherit;
+}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: #121826 !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #1e293b;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+}
